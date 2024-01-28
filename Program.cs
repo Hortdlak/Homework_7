@@ -15,16 +15,16 @@ namespace Homework_7
             //Задайте значения M и N.Напишите программу, которая выведет все натуральные числа в промежутке от M до N.
             //Использовать рекурсию, не использовать циклы.
 
-            int M = Getting_number("M");
+            //int M = Getting_number("M");
 
-            int N = Getting_number("N");
+            //int N = Getting_number("N");
 
-            if (M > N)
-            {
-                (M, N) = (N, M);
-            }
+            //if (M > N)
+            //{
+            //    (M, N) = (N, M);
+            //}
 
-            ReadSegmentOfNumbers(M, N);
+            //ReadSegmentOfNumbers(M, N);
 
             #endregion
 
@@ -32,6 +32,13 @@ namespace Homework_7
 
             //Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
 
+            int m = Getting_number("M");
+
+            int n = Getting_number("N");
+
+            int result = AckermannFunction(m, n);
+
+            Console.WriteLine($"A({m},{n}) = {result}");
 
             #endregion
 
@@ -43,6 +50,25 @@ namespace Homework_7
             #endregion
 
             Console.ReadKey();
+        }
+        static int AckermannFunction(int m, int n)
+        {
+            if (m == 0)
+            {
+                return n + 1;
+            }
+            else if (m > 0 && n == 0)
+            {
+                return AckermannFunction(m - 1, 1);
+            }
+            else if (m > 0 && n > 0)
+            {
+                return AckermannFunction(m - 1, AckermannFunction(m, n - 1));
+            }
+            else
+            {
+                return 0;
+            }
         }
         private static void ReadSegmentOfNumbers(int head, int tail)
         {
