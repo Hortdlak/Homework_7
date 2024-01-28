@@ -32,25 +32,59 @@ namespace Homework_7
 
             //Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
 
-            int m = Getting_number("M");
+            //int m = Getting_number("m");
 
-            int n = Getting_number("N");
+            //int n = Getting_number("n");
 
-            int result = AckermannFunction(m, n);
+            //int result = AckermannFunction(m, n);
 
-            Console.WriteLine($"A({m},{n}) = {result}");
+            //Console.WriteLine($"A({m},{n}) = {result}");
 
             #endregion
 
-            #region  Вывод массива с помощью рекурсии
+            #region  Вывод произвольного массива с конца, c помощью рекурсии
 
             //Задайте произвольный массив. Выведете его элементы, начиная с конца. Использовать рекурсию, не использовать циклы.
 
+            int index = 0;
+
+            Random rnd = new Random();
+
+            int[] array = new int[rnd.Next(4, 12)];
+
+            FillingArray(array, rnd, index);
+
+            index = array.Length - 1;
+
+            PrintArray(array, index);
 
             #endregion
-
-            Console.ReadKey();
         }
+
+        static void PrintArray(int[] array, int index)
+        {
+            if (index < 0)
+            {
+                return;
+            }
+
+            Console.Write($"{array[index]} ");
+
+            PrintArray(array, index - 1);
+        }
+
+        static void FillingArray(int[] array, Random rnd, int index)
+        {
+            if (index >= array.Length)
+            {
+                return;
+            }
+
+            array[index] = rnd.Next(1, 100);
+
+            FillingArray(array, rnd, index + 1);
+        }
+
         static int AckermannFunction(int m, int n)
         {
             if (m == 0)
@@ -70,6 +104,7 @@ namespace Homework_7
                 return 0;
             }
         }
+
         private static void ReadSegmentOfNumbers(int head, int tail)
         {
 
