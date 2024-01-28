@@ -15,6 +15,16 @@ namespace Homework_7
             //Задайте значения M и N.Напишите программу, которая выведет все натуральные числа в промежутке от M до N.
             //Использовать рекурсию, не использовать циклы.
 
+            int M = Getting_number("M");
+
+            int N = Getting_number("N");
+
+            if (M > N)
+            {
+                (M, N) = (N, M);
+            }
+
+            ReadSegmentOfNumbers(M, N);
 
             #endregion
 
@@ -31,6 +41,45 @@ namespace Homework_7
 
 
             #endregion
+
+            Console.ReadKey();
+        }
+        private static void ReadSegmentOfNumbers(int head, int tail)
+        {
+
+            if (head > tail)
+            {
+                return;
+            }
+
+            Console.Write(head);
+
+            head++;
+
+            if (head <= tail)
+            {
+                Console.Write(", ");
+            }
+
+            ReadSegmentOfNumbers(head, tail);
+
+        }
+
+        static int Getting_number(string pattern)
+        {
+            while (true)
+            {
+                Console.Write($"Введите число {pattern}: ");
+
+                string UserInput = Console.ReadLine(); // запрос числа от пользователя
+
+                Console.Clear();
+
+                if (int.TryParse(UserInput, out int data)) // проверка числа
+                {
+                    return data; // выход числа из метода
+                }
+            }
         }
     }
 }
